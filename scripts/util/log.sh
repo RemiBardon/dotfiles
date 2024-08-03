@@ -24,10 +24,10 @@ info() {
 	(( $LOG_INFO )) && printf "   ${DWhite}[${Blue}INFO${DWhite}]${Color_Off} $*\n" || return 0
 }
 warn() {
-	(( $LOG_WARN )) && printf "   ${DWhite}[${Yellow}WARN${DWhite}]${Color_Off} $*\n" || return 0
+	(( $LOG_WARN )) && printf "   ${DWhite}[${Yellow}WARN${DWhite}]${Color_Off} ${Yellow}$*${Color_Off}\n" || return 0
 }
 error() {
-	printf "  ${DWhite}[${Red}ERROR${DWhite}]${Color_Off} $*\n"
+	printf "  ${DWhite}[${Red}ERROR${DWhite}]${Color_Off} ${Red}$*${Color_Off}\n"
 }
 success() {
 	printf "     ${DWhite}[${Green}OK${DWhite}]${Color_Off} $*\n"
