@@ -93,16 +93,33 @@ install_dotfiles() {
 
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*'); do
     dst="$HOME/.$(basename "${src%.*}")"
-    dst_file="$src.destination"
-    if [ -f "$dst_file" ]; then
+
+    try_dst_file() {
+      dst_file="${1:?}"
+      trace "Looking fo symlink destination file at $(format_url "$dst_file")…"
+
+      # Abort if file doesn't exist
+      [ -f "$dst_file" ] || return 1
+
       manual_dst="$(cat "$dst_file")"
       if [ -z "$manual_dst" ]; then
-	      warn "Destination file $(format_url "$dst_file") is empty, will use $(format_url "$dst") as fallback"
+        warn "Destination file $(format_url "$dst_file") is empty, will use $(format_url "$dst") as fallback"
+        manual_dst="$dst"
       else
-	      dst="$manual_dst"
-	      trace "Read destination $(format_url "$dst") from $(format_url "$dst_file")"
+        manual_dst=$(eval "echo $manual_dst")
       fi
+    }
+
+    if try_dst_file "$src.destination"; then
+      # `manual_dst` is a file
+      dst="$manual_dst"
+      trace "Read destination $(format_url "$dst") from $(format_url "$dst_file")"
+    elif try_dst_file "$(dirname "$src")/symlinks.destination"; then
+      # `manual_dst` is a directory
+      dst="$manual_dst/$(basename "${src%.*}")"
+      trace "Read destination $(format_url "$dst") from $(format_url "$dst_file")"
     fi
+
     link_ "$src" "$dst"
   done
 
