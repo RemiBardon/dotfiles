@@ -4,10 +4,30 @@
 
 set -e
 
+source "$(dirname "$0")"/util.sh
+
 cd "$(dirname $0)"/..
 
-echo "› brew bundle"
-brew bundle
+brew_bundle() {
+	info "Installing dependencies via Homebrew…"
 
-# find the installers and run them iteratively
-find . -name install.sh | while read installer ; do sh -c "${installer}" ; done
+	edo brew bundle
+
+	success 'Successfully installed dependencies via Homebrew.\n'
+}
+
+run_installers() {
+	info "Running custom installers…"
+
+	local installer installers=($(find . -name install.sh))
+
+	for installer in "${installers[@]}"; do
+		edo sh -c "${installer}"
+		info $(format_secondary "Ran installer $(format_url $installer)")
+	done
+
+	success 'Successfully ran custom installers.\n'
+}
+
+brew_bundle
+run_installers
