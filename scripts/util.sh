@@ -23,3 +23,16 @@ edo() {
 	fi
 	return $?
 }
+
+if_yes() {
+	local yes_no_default=${1:?} yes_no_answer
+	shift 1
+
+	printf "${NEWLINE_MARGIN}${BCyan}Answer (y|N): "
+	read -n 1 yes_no_answer
+	printf "${Color_Off}\n"
+	case "${yes_no_answer:-${yes_no_default}}" in
+		y|Y) edo $@ ;;
+		n|N|*) return 1 ;;
+	esac
+}
