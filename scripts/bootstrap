@@ -1,156 +1,118 @@
 #!/usr/bin/env bash
 #
-# bootstrap installs things.
-
-cd "$(dirname "$0")/.."
-DOTFILES_ROOT=$(pwd -P)
+# `bootstrap` installs things.
 
 set -e
 
-echo ''
+source "$(dirname "$0")"/util.sh
 
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
+cd "$(dirname "$0")"/..
+DOTFILES_ROOT=$(pwd -P)
 
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
+configure_git() {
+  if ! [ -f git/gitconfig.local.symlink ]; then
+    info 'Setting up git config…'
 
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit
-}
-
-setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
-  then
-    info 'setup gitconfig'
-
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
+    local git_credential='cache'
+    if [ "$(uname -s)" == 'Darwin' ]; then
       git_credential='osxkeychain'
     fi
 
-    user ' - What is your github author name?'
-    read -e git_authorname
-    user ' - What is your github author email?'
-    read -e git_authoremail
+    question 'What is your git author name?'
+    edo read -e git_authorname
+    question 'What is your git author email?'
+    edo read -e git_authoremail
 
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
+    edo 'sed
+      -e "s/AUTHORNAME/$git_authorname/g"
+      -e "s/AUTHOREMAIL/$git_authoremail/g"
+      -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g"
+      git/gitconfig.local.symlink.example > git/gitconfig.local.symlink'
 
-    success 'gitconfig'
+    success 'Successfully configured git.\n'
   fi
 }
 
+link_() {
+  local src="$1" dst="$2"
 
-link_file () {
-  local src=$1 dst=$2
+  local overwrite backup skip
+  local action
 
-  local overwrite= backup= skip=
-  local action=
-
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
-  then
-
-    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
-    then
-
-      local currentSrc="$(readlink $dst)"
-
-      if [ "$currentSrc" == "$src" ]
-      then
-
-        skip=true;
-
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
+    if (( ! (${overwrite_all:-0} + ${backup_all:-0} + ${skip_all:-0}) )); then
+      if [ "$(readlink $dst)" == "$src" ]; then
+        skip=1;
       else
-
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        question "File already exists: $(format_url $dst) ($(format_url $(basename "$src"))), what do you want to do?\n${NEWLINE_MARGIN}[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        printf "${NEWLINE_MARGIN}${BCyan}Answer: "
         read -n 1 action
+        printf "${Color_Off}\n"
 
         case "$action" in
-          o )
-            overwrite=true;;
-          O )
-            overwrite_all=true;;
-          b )
-            backup=true;;
-          B )
-            backup_all=true;;
-          s )
-            skip=true;;
-          S )
-            skip_all=true;;
-          * )
-            ;;
+          o) overwrite=1 ;;
+          O) overwrite_all=1 ;;
+          b) backup=1 ;;
+          B) backup_all=1 ;;
+          s) skip=1 ;;
+          S) skip_all=1 ;;
+          *) warn "Unknown action, skipping…"; skip=1 ;;
         esac
-
       fi
-
     fi
 
     overwrite=${overwrite:-$overwrite_all}
     backup=${backup:-$backup_all}
     skip=${skip:-$skip_all}
 
-    if [ "$overwrite" == "true" ]
-    then
-      rm -rf "$dst"
-      success "removed $dst"
+    if (( $overwrite )); then
+      edo rm -rf "$dst"
+      info $(format_secondary "Deleted $(format_url $dst).")
     fi
 
-    if [ "$backup" == "true" ]
-    then
-      mv "$dst" "${dst}.backup"
-      success "moved $dst to ${dst}.backup"
+    if (( $backup )); then
+      edo mv "$dst" "${dst}.backup"
+      info $(format_secondary "Backed up $(format_url $dst) to $(format_url "${dst}.backup").")
     fi
 
-    if [ "$skip" == "true" ]
-    then
-      success "skipped $src"
+    if (( $skip )); then
+      trace $(format_secondary "Skipped $(format_url $src).")
+      return 0
     fi
   fi
 
-  if [ "$skip" != "true" ]  # "false" or empty
-  then
-    ln -s "$1" "$2"
-    success "linked $1 to $2"
-  fi
+  edo ln -s "$src" "$dst"
+  info $(format_secondary "Linked $(format_url $src) to $(format_url $dst).")
 }
 
-install_dotfiles () {
-  info 'installing dotfiles'
+install_dotfiles() {
+  info 'Installing dotfiles…'
 
-  local overwrite_all=false backup_all=false skip_all=false
+  local overwrite_all backup_all skip_all
+  local src dst
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
-  do
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*'); do
     dst="$HOME/.$(basename "${src%.*}")"
-    link_file "$src" "$dst"
+    link_ "$src" "$dst"
   done
+
+  success 'Successfully installed dotfiles.\n'
 }
 
-setup_gitconfig
+install_dependencies() {
+	# If we're on a Mac, let's install and setup homebrew.
+	if [ "$(uname -s)" == 'Darwin' ]; then
+	  info 'Installing dependencies…'
+	  if edo _log_as_info source bin/dot; then
+	    success 'Successfully installed dependencies.\n'
+	  else
+	    die 'Error installing dependencies.'
+	  fi
+	fi
+}
+
+configure_git
 install_dotfiles
+install_dependencies
 
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot | while read -r data; do info "$data"; done
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
-
-echo ''
-echo '  All installed!'
+success 'All installed!'
