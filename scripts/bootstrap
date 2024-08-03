@@ -89,10 +89,20 @@ install_dotfiles() {
   info 'Installing dotfiles…'
 
   local overwrite_all backup_all skip_all
-  local src dst
+  local src dst dst_file manual_dst
 
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*'); do
     dst="$HOME/.$(basename "${src%.*}")"
+    dst_file="$src.destination"
+    if [ -f "$dst_file" ]; then
+      manual_dst="$(cat "$dst_file")"
+      if [ -z "$manual_dst" ]; then
+	      warn "Destination file $(format_url "$dst_file") is empty, will use $(format_url "$dst") as fallback"
+      else
+	      dst="$manual_dst"
+	      trace "Read destination $(format_url "$dst") from $(format_url "$dst_file")"
+      fi
+    fi
     link_ "$src" "$dst"
   done
 
