@@ -47,8 +47,8 @@ There's a few special files in the hierarchy.
 - **topic/\*.symlink.destination**: For every file ending in `*.symlink`, `scripts/bootstrap` checks
   for a custom symlink destination file with the same name plus `.destination`. In such file, you can write
   a file path and it will be used to create the symlink. You can also use variables in it, they will be expanded.
-- **topic/symlinks.destination**: When most files from a section should be symlinked to a directory that's not
-  `$HOME/.<topic>/<file>`, you can use a `symlinks.destination` file to point to a destination directory.
+- **topic/symlinks.destination**: When most files from a topic should be symlinked to a place that's not `$HOME/.<file>`,
+  you can use a `symlinks.destination` file to point to a destination directory.
   This file works like `*.symlink.destination` files, but should point to a directory.
 
 ## ⬇️ Install
