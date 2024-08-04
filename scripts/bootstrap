@@ -40,7 +40,7 @@ link_() {
   local action
 
   if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
-    if (( ! (${overwrite_all:-0} + ${backup_all:-0} + ${skip_all:-0}) )); then
+    if ! [[ (( $overwrite_all )) || (( $backup_all )) || (( $skip_all )) ]]; then
       if [ "$(readlink $dst)" == "$src" ]; then
         skip=1;
       else
