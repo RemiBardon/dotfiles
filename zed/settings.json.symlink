@@ -1,0 +1,87 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "assistant": {
+    "enabled": true,
+    "version": "2",
+    "dock": "right"
+  },
+  "soft_wrap": "editor_width",
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "buffer_font_features": {
+    "calt": false
+  },
+  "tab_size": 2,
+  "show_whitespaces": "boundary",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  // "active_pane_magnification": 1.5,
+  // "hover_popover_enabled": false,
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  },
+  "terminal": {
+    "font_size": 10,
+    "font_family": "MesloLGS NF"
+  },
+  "file_types": {
+    "Plain Text": ["*.destination"],
+    "JSONC": ["**/zed/*.json.symlink"],
+    "JSON": ["*.json.symlink"]
+  },
+  "languages": {
+    "Rust": {
+      "tab_size": 4
+    },
+    "Dockerfile": {
+      "tab_size": 4
+    },
+    "TOML": {
+      "tab_size": 4
+    },
+    "Lua": {
+      "show_whitespaces": "all"
+    },
+    "Shell Script": {
+      "hard_tabs": true,
+      "tab_size": 2
+    },
+    "Plain Text": {
+      "ensure_final_newline_on_save": false
+    }
+  },
+  "language_overrides": {
+    "Markdown": {
+      // Removing trailing whitespaces would remove manual line breaks (two spaces in Markdown).
+      "remove_trailing_whitespace_on_save": false,
+      // Personal preference.
+      // NOTE: Disabled because of UTF-8 bug.
+      "show_whitespaces": "none"
+    }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          // "features": "debug",
+          "cfgs": {
+            "debug_assertions": true
+          }
+        }
+      }
+    }
+  }
+}

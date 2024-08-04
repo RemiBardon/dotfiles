@@ -1,0 +1,14 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-s": "workspace::SaveWithoutFormat"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-;": null
+    }
+  }
+]
