@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Move into a new session.
+
+set -e
+
+source "$(dirname "$0")"/util.sh
+source "$(dirname "$0")"/logic/symlink-topic.sh
+
+for topic in "$@"; do
+	if ! [ -d "$topic" ]; then
+		error "Topic $(format_url $topic) not found."
+		continue
+	fi
+	symlink_topic "$topic"
+
+	success "Successfully symlinked topic $(format_url $topic)"
+done
