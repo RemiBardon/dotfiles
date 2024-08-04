@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Move out of your session.
+#
+# This script initializes the repository with config files already on your computer,
+# making your dotfiles repository the source of truth. It's an interactive process
+# which will find config files, ask you what to do with it and then create the symlinks
+# as `scripts/bootstrap` would do.
+
+set -e
+
+source "$(dirname "$0")"/util.sh
+
+cd "$(dirname $0)"/..
+
+mv Brewfile Brewfile-$(date +%Y%m%d%H%M%S).backup
