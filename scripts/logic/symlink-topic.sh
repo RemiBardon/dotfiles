@@ -18,7 +18,7 @@ link_() {
 			if [ "$(readlink "$dst")" == "$src" ]; then
 				skip=1;
 			else
-				question "File already exists: $(format_url $dst) ($(format_url $(basename "$src"))), what do you want to do?\n${NEWLINE_MARGIN}[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+				question "File already exists: $(format_url "$dst") ($(format_url $(basename "$src"))), what do you want to do?\n${NEWLINE_MARGIN}[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
 				printf "${NEWLINE_MARGIN}${BCyan}Answer: "
 				read -n 1 -r action
 				printf "${Color_Off}\n"
@@ -40,10 +40,10 @@ link_() {
 		skip=${skip:-$skip_all}
 
 		if (( $overwrite )); then
-		  local q="Are you REALLY sure you want to delete $(format_url $dst)? This might delete your \`\$HOME\` if it's what you wrote!"
+		  local q="Are you REALLY sure you want to delete $(format_url "$dst")? This might delete your \`\$HOME\` if it's what you wrote!"
 		  if [ -L "$dst" ] || ask_yes_no "$q" "n"; then
 				edo rm -rf "$dst"
-				info $(format_secondary "Deleted $(format_url $dst).")
+				info $(format_secondary "Deleted $(format_url "$dst").")
 			else
 				info 'Guess we prevented something bad 😮‍💨'
 				skip=1
@@ -52,17 +52,17 @@ link_() {
 
 		if (( $backup )); then
 			edo mv "$dst" "${dst}.backup"
-			info $(format_secondary "Backed up $(format_url $dst) to $(format_url "${dst}.backup").")
+			info $(format_secondary "Backed up $(format_url "$dst") to $(format_url "${dst}.backup").")
 		fi
 
 		if (( $skip )); then
-			trace $(format_secondary "Skipped $(format_url $src).")
+			trace $(format_secondary "Skipped $(format_url "$src").")
 			return 0
 		fi
 	fi
 
 	edo ln -s "$src" "$dst"
-	info $(format_secondary "Linked $(format_url $dst) to $(format_url $src).")
+	info $(format_secondary "Linked $(format_url "$dst") to $(format_url "$src").")
 }
 
 symlink_topic() {
@@ -95,7 +95,7 @@ symlink_topic() {
 			fi
 		}
 
-		if try_dst_file "$src.destination"; then
+		if try_dst_file "${src}.destination"; then
 			# `manual_dst` is a file
 			dst="$manual_dst"
 			trace "Read destination $(format_url "$dst") from $(format_url "$dst_file")"
