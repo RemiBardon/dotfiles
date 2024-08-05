@@ -43,7 +43,7 @@ link_() {
 		  local q="Are you REALLY sure you want to delete $(format_url "$dst")? This might delete your \`\$HOME\` if it's what you wrote!"
 		  if [ -L "$dst" ] || ask_yes_no "$q" "n"; then
 				edo rm -rf "$dst"
-				info $(format_secondary "Deleted $(format_url "$dst").")
+				warn $(format_secondary "Deleted $(format_url "$dst").")
 			else
 				info 'Guess we prevented something bad 😮‍💨'
 				skip=1
@@ -62,7 +62,7 @@ link_() {
 	fi
 
 	edo ln -s "$src" "$dst"
-	info $(format_secondary "Linked $(format_url "$dst") to $(format_url "$src").")
+	success $(format_secondary "Linked $(format_url "$dst") to $(format_url "$src").")
 }
 
 symlink_topic() {
