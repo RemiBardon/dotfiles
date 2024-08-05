@@ -59,7 +59,7 @@ link_() {
 	fi
 
 	edo ln -s "$src" "$dst"
-	info $(format_secondary "Linked $(format_url $src) to $(format_url $dst).")
+	info $(format_secondary "Linked $(format_url $dst) to $(format_url $src).")
 }
 
 symlink_topic() {
