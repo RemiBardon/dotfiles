@@ -39,8 +39,9 @@ link_() {
 		skip=${skip:-$skip_all}
 
 		if (( $overwrite )); then
-			question "Are you REALLY sure you want to delete $(format_url $dst)? This might delete your \`\$HOME\` if it's what you wrote!"
-			if if_yes "n" edo rm -rf "$dst"; then
+		  local q="Are you REALLY sure you want to delete $(format_url $dst)? This might delete your \`\$HOME\` if it's what you wrote!"
+		  if [ -L "$dst" ] || ask_yes_no "$q" "n"; then
+				edo rm -rf "$dst"
 				info $(format_secondary "Deleted $(format_url $dst).")
 			else
 				info 'Guess we prevented something bad 😮‍💨'
