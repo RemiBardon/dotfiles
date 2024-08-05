@@ -45,6 +45,7 @@ link_() {
 				info $(format_secondary "Deleted $(format_url $dst).")
 			else
 				info 'Guess we prevented something bad 😮‍💨'
+				skip=1
 			fi
 		fi
 
