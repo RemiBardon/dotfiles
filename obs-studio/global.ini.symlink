@@ -12,6 +12,7 @@ ProcessPriority=Normal
 EnableAutoUpdates=true
 ConfirmOnExit=true
 HotkeyFocusType=NeverDisableHotkeys
+BrowserHWAccel=true
 MacOSPermissionsDialogLastShown=1
 YtDockCleanupDone=true
 InstallGUID=75bf93d3047abc4cea3041757c9885821f848f7d
