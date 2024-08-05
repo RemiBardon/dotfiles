@@ -19,7 +19,8 @@ edo() {
 		dry_run $@
 	else
 		trace $@
-		eval $@
+		# NOTE: `eval $@` would break spaces in arguments.
+		eval $(printf '%q ' "$@")
 	fi
 	return $?
 }
