@@ -15,7 +15,7 @@ die() {
 }
 
 edo() {
-	if [[ $DRY_RUN ]]; then
+	if (( $DRY_RUN )); then
 		dry_run $@
 	else
 		trace $@
