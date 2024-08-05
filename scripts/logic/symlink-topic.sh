@@ -14,7 +14,8 @@ link_() {
 
 	if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
 		if ! [[ (( $overwrite_all )) || (( $backup_all )) || (( $skip_all )) ]]; then
-			if [ "$(readlink $dst)" == "$src" ]; then
+		  [[ -L "$dst" ]] && trace "Destination is already a link and points to $(format_url $(readlink "$dst"))"
+			if [ "$(readlink "$dst")" == "$src" ]; then
 				skip=1;
 			else
 				question "File already exists: $(format_url $dst) ($(format_url $(basename "$src"))), what do you want to do?\n${NEWLINE_MARGIN}[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
