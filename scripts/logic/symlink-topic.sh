@@ -65,7 +65,7 @@ link_() {
 symlink_topic() {
 	local topic=${1:?}
 	trace "Symlinking topic $(format_url $topic)…"
-	local topic_dir="${topic}"
+	local topic_dir="${DOTFILES_ROOT:?}/${topic:?}"
 
 	local src dst dst_file manual_dst
 

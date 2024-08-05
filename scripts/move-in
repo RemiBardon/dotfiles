@@ -7,6 +7,9 @@ set -e
 source "$(dirname "$0")"/util.sh
 source "$(dirname "$0")"/logic/symlink-topic.sh
 
+cd "$(dirname "$0")"/..
+DOTFILES_ROOT=$(pwd -P)
+
 for topic in "$@"; do
 	if ! [ -d "$topic" ]; then
 		error "Topic $(format_url $topic) not found."
