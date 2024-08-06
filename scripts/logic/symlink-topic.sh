@@ -18,8 +18,8 @@ link_() {
 			if [ "$(readlink "$dst")" == "$src" ]; then
 				skip=1;
 			else
-				question "File already exists: $(format_url "$dst") ($(format_url $(basename "$src"))), what do you want to do?\n${NEWLINE_MARGIN}[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-				printf "${NEWLINE_MARGIN}${BCyan}Answer: "
+				question "File already exists: $(format_url "$dst") ($(format_url $(basename "$src"))), what do you want to do?\n${LOGGER_MARGIN}[s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+				printf "${LOGGER_MARGIN}${BCyan}Answer: "
 				read -n 1 -r action
 				printf "${Color_Off}\n"
 
