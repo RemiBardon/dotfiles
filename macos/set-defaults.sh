@@ -39,3 +39,30 @@ defaults write com.apple.Safari.plist IncludeDevelopMenu -bool true
 defaults write com.apple.Safari.plist WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari.plist "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Configure the emoji picker how I like it.
+defaults write com.apple.characterpaletteim CVStartAsLargeWindow 1
+defaults write com.apple.characterpaletteim CVFontSize 26
+defaults write com.apple.characterpaletteim CVActiveCategories -array \
+  "Category-Emoji" \
+  "Category-Arrows" \
+  "Category-Bullets" \
+  "Category-CurrencySymbols" \
+  "Category-Latin" \
+  "Category-LetterlikeSymbols" \
+  "Category-MathematicalSymbols" \
+  "Category-Parentheses" \
+  "Category-Pictographs" \
+  "Category-Punctuation" \
+  "Category-GeometricalShapes" \
+  "Category-Digits" \
+  "Category-DigitsAll" \
+  "Category-Dingbats" \
+  "Category-PhoneticAlphabet" \
+  "Category-BoxDrawing" \
+  "Category-EnclosedCharacters" \
+  "Category-SignStandardSymbols" \
+  "Category-TechnicalSymbols" \
+  "Category-Brailles" \
+  "Category-Unicode" \
+  "Category-Greek"
