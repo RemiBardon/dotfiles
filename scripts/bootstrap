@@ -4,10 +4,11 @@
 
 set -e
 
-source "$(dirname "$0")"/util.sh
-source "$(dirname "$0")"/logic/symlink-topic.sh
+SCRIPTS_ROOT="$(dirname "$0")"
+source "${SCRIPTS_ROOT}"/util.sh
+source "${SCRIPTS_ROOT}"/logic/symlink-topic.sh
 
-cd "$(dirname "$0")"/..
+cd "${SCRIPTS_ROOT}"/..
 DOTFILES_ROOT=$(pwd -P)
 
 configure_git() {

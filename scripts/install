@@ -4,7 +4,8 @@
 
 set -e
 
-source "$(dirname "$0")"/util.sh
+SCRIPTS_ROOT="$(dirname "$0")"
+source "${SCRIPTS_ROOT}"/util.sh
 
 cd "$(dirname $0)"/..
 

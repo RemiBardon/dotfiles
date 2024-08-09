@@ -3,9 +3,10 @@
 # Some reusable functions.
 
 # Expose all utility constants and functions.
-source "$(dirname "$0")"/bash-toolbox/colors.sh
-source "$(dirname "$0")"/bash-toolbox/die.sh
-source "$(dirname "$0")"/bash-toolbox/edo.sh
-source "$(dirname "$0")"/bash-toolbox/format.sh
-source "$(dirname "$0")"/bash-toolbox/log.sh
-source "$(dirname "$0")"/bash-toolbox/yes_no.sh
+BASH_TOOLBOX="${SCRIPTS_ROOT:?}"/bash-toolbox
+source "${BASH_TOOLBOX}"/colors.sh
+source "${BASH_TOOLBOX}"/die.sh
+source "${BASH_TOOLBOX}"/edo.sh
+source "${BASH_TOOLBOX}"/format.sh
+source "${BASH_TOOLBOX}"/log.sh
+source "${BASH_TOOLBOX}"/yes_no.sh
