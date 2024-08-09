@@ -8,7 +8,11 @@
   {
     "context": "Editor",
     "bindings": {
-      "cmd-;": null
+      "cmd-;": null,
+      // I don't use it and it allows typing "·" for inclusive text in French.
+      "alt-shift-f": null,
+      // I disabled "alt-shift-f" so I'll disable this one too for coherence.
+      "alt-shift-b": null
     }
   }
 ]
