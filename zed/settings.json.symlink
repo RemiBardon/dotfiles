@@ -56,7 +56,8 @@
       "tab_size": 4
     },
     "Lua": {
-      "show_whitespaces": "all"
+      "show_whitespaces": "all",
+      "format_on_save": "off"
     },
     "Shell Script": {
       "hard_tabs": true,
