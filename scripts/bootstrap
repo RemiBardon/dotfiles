@@ -11,30 +11,6 @@ source "${SCRIPTS_ROOT}"/logic/symlink-topic.sh
 cd "${SCRIPTS_ROOT}"/..
 DOTFILES_ROOT=$(pwd -P)
 
-configure_git() {
-  if ! [ -f git/gitconfig.local.symlink ]; then
-    info 'Setting up git config…'
-
-    local git_credential='cache'
-    if [ "$(uname -s)" == 'Darwin' ]; then
-      git_credential='osxkeychain'
-    fi
-
-    question 'What is your git author name?'
-    edo read -e git_authorname
-    question 'What is your git author email?'
-    edo read -e git_authoremail
-
-    edo 'sed
-      -e "s/AUTHORNAME/$git_authorname/g"
-      -e "s/AUTHOREMAIL/$git_authoremail/g"
-      -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g"
-      git/gitconfig.local.symlink.example > git/gitconfig.local.symlink'
-
-    success 'Successfully configured git.\n'
-  fi
-}
-
 install_dotfiles() {
   info 'Installing dotfiles…'
 
@@ -61,7 +37,6 @@ install_dependencies() {
 	fi
 }
 
-configure_git
 install_dotfiles
 install_dependencies
 

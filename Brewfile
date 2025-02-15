@@ -71,7 +71,6 @@ brew 'rename'
 brew 'ripgrep'
 brew 's3cmd'
 brew 'sccache'
-#brew 'spaceman-diff' # NOTE: Will enable once I start using it
 brew 'stepci'
 brew 'swagger-codegen'
 brew 'swift-format'
