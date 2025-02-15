@@ -7,8 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "features": {
+    "inline_completion_provider": "none"
+  },
   "assistant": {
-    "enabled": true,
+    "enabled": false,
     "version": "2",
     "dock": "right"
   },

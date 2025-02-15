@@ -110,6 +110,7 @@ cask 'whatsapp'
 cask 'visual-studio-code'
 cask 'vlc'
 cask 'zed'
+cask 'fliqlo'
 
 # ===== Visual Studio Code extensions =====
 

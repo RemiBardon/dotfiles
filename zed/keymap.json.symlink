@@ -12,7 +12,31 @@
       // I don't use it and it allows typing "·" for inclusive text in French.
       "alt-shift-f": null,
       // I disabled "alt-shift-f" so I'll disable this one too for coherence.
-      "alt-shift-b": null
+      "alt-shift-b": null,
+      // "fn-left".
+      "home": "pane::ActivatePrevItem",
+      // "fn-right".
+      "end": "pane::ActivateNextItem",
+      // Remap `ctrl-up` to `alt-up` because it's used by macOS.
+      // Also I don't care about moving line up.
+      "alt-up": "editor::MoveToStartOfParagraph",
+      "ctrl-up": null,
+      // Remap `ctrl-down` to `alt-down` because it's used by macOS.
+      // Also I don't care about moving line down.
+      "alt-down": "editor::MoveToEndOfParagraph",
+      "ctrl-down": null,
+      // Instead of duplicating line up.
+      "alt-shift-up": "editor::SelectToStartOfParagraph",
+      // Instead of duplicating line down.
+      "alt-shift-down": "editor::SelectToEndOfParagraph"
+    }
+  },
+  // Disable assistant.
+  {
+    "context": "Editor || ContextEditor",
+    "bindings": {
+      "cmd->": null,
+      "cmd-<": null
     }
   }
 ]
