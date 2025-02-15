@@ -1,0 +1,16 @@
+# Mercurial configuration file
+# See https://hgbook.red-bean.com/read/a-tour-of-mercurial-the-basics.html#sec:tour-basic:username
+[ui]
+username = Rémi Bardon <remi@remibardon.name>
+
+[extensions]
+absorb = 
+# NOTE: Recommended by Zash. For amends, rebases…
+evolve = 
+fetch = 
+#graft = 
+histedit = 
+mq = 
+rebase = 
+uncommit = 
+

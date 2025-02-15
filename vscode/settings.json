@@ -1,0 +1,103 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.insertSpaces": false,
+    "editor.wordWrap": "on",
+    "files.exclude": {
+        "**/.obsidian/": true,
+        "**/*.code-workspace": true,
+        "**/node_modules/": true
+    },
+    "editor.renderControlCharacters": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.watcherExclude": {
+        "**/.bloop": true,
+        "**/.metals": true,
+        "**/.ammonite": true
+    },
+    "markdown.extension.toc.levels": "2..6",
+    "editor.accessibilitySupport": "off",
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "openapi.sortOutlines": false,
+    "yaml.format.singleQuote": true,
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "todo-tree.general.statusBar": "tags",
+    "todo-tree.general.tags": [
+        "BUG",
+        "HACK",
+        "FIXME",
+        "TODO",
+        "XXX",
+        "[ ]",
+        "[x]"
+    ],
+    "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+    "workbench.preferredDarkColorTheme": "Monokai",
+    "redhat.telemetry.enabled": false,
+    "rust.build_on_save": true,
+    "search.exclude": {
+        "**/Cargo.lock": true
+    },
+    "editor.minimap.enabled": false,
+    "extensions.ignoreRecommendations": true,
+    "go.useCodeSnippetsOnFunctionSuggest": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "c4.diagram.plantuml.enabled": true,
+    "plantuml.render": "PlantUMLServer",
+    "plantuml.server": "https://www.plantuml.com/plantuml",
+    "markdown-pdf.plantumlServer": "https://www.plantuml.com/plantuml",
+    "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "editor.fontSize": 16,
+    "haskell.manageHLS": "PATH",
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "C_Cpp.default.includePath": [
+        "${workspaceRoot}"
+    ],
+    "C_Cpp.vcFormat.indent.preserveComments": true,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "workbench.colorTheme": "Monokai",
+    "shellcheck.exclude": [
+        "2054",
+        "2148",
+        "2016",
+        "2155"
+    ],
+    "files.associations": {
+        "*.exlib": "shellscript",
+        "*.exheres-0": "shellscript"
+    },
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.editorAssociations": {
+        "*.html@_default": "default"
+    },
+    "explorer.confirmDelete": false,
+    "workbench.activityBar.location": "top",
+    "rust-analyzer.cargo.buildScripts.overrideCommand": null,
+    "lldb.library": "/Applications/Xcode-15.0.1.app/Contents/SharedFrameworks/LLDB.framework/Versions/A/LLDB",
+    "lldb.launch.expressions": "native",
+    "window.autoDetectColorScheme": true
+}
