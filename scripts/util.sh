@@ -9,4 +9,4 @@ source "${BASH_TOOLBOX}"/die.sh
 source "${BASH_TOOLBOX}"/edo.sh
 source "${BASH_TOOLBOX}"/format.sh
 source "${BASH_TOOLBOX}"/log.sh
-source "${BASH_TOOLBOX}"/yes_no.sh
+source "${BASH_TOOLBOX}"/yes-no.sh
