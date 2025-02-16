@@ -123,6 +123,8 @@ read_only = " 󰌾"
 truncate_to_repo = false
 # truncation_length = 4
 truncation_symbol = '…/'
+before_repo_root_style = 'cyan'
+repo_root_style = 'bold cyan'
 
 [docker_context]
 symbol = " "
