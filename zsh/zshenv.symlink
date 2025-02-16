@@ -14,4 +14,5 @@ export PATH="$CARGO_HOME/bin:$PATH"
 
 # === Node.js ===
 
-export PATH=$HOME/.npm/bin:$PATH
+export PATH="$HOME/.npm/bin:$PATH"
+export PATH="$HOME/.volta/bin:$PATH"
