@@ -42,7 +42,7 @@ link_() {
 		if (( $overwrite )); then
 		  local q="Are you REALLY sure you want to delete $(format_url "$dst")? This might delete your \`\$HOME\` if it's what you wrote!"
 		  if [ -L "$dst" ] || ask_yes_no "$q" "n"; then
-				edo rm -rf "$dst"
+				edo ${needs_sudo+sudo} rm -rf "$dst"
 				warn $(format_secondary "Deleted $(format_url "$dst").")
 			else
 				info 'Guess we prevented something bad 😮‍💨'
@@ -51,7 +51,7 @@ link_() {
 		fi
 
 		if (( $backup )); then
-			edo mv "$dst" "${dst}.backup"
+			edo ${needs_sudo+sudo} mv "$dst" "${dst}.backup"
 			info $(format_secondary "Backed up $(format_url "$dst") to $(format_url "${dst}.backup").")
 		fi
 
@@ -61,7 +61,7 @@ link_() {
 		fi
 	fi
 
-	edo ln -s "$src" "$dst"
+	edo ${needs_sudo+sudo} ln -s "$src" "$dst"
 	success $(format_secondary "Linked $(format_url "$dst") to $(format_url "$src").")
 }
 
@@ -103,6 +103,17 @@ symlink_topic() {
 			# `manual_dst` is a directory
 			dst="$manual_dst/$(basename "${src%.*}")"
 			trace "Read destination $(format_url "$dst") from $(format_url "$dst_file")"
+		fi
+
+		local dst_dir="$(dirname "$dst")"
+		if test -w "$dst_dir"; then
+			unset needs_sudo
+		else
+			local needs_sudo=1
+		fi
+
+		if ! [ -d "$dst_dir" ]; then
+			${needs_sudo+sudo} mkdir -p "$dst_dir"
 		fi
 
 		link_ "$src" "$dst"
