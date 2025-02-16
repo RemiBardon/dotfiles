@@ -1,50 +1,60 @@
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
+# === GPG ===
 
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/dev
+export GPG_TTY="$(tty)"
+gpgconf --launch gpg-agent
+gpg-connect-agent updatestartuptty /bye > /dev/null
 
-# Stash your environment variables in ~/.localrc. This means they'll stay out
-# of your main dotfiles repository (which may be public, like this one), but
-# you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
+# === SSH over GPG ===
 
-# all of our zsh files
-typeset -U config_files
-config_files=($ZSH/**/*.zsh)
+#zstyle :omz:plugins:keychain agents ssh,gpg
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
-  source $file
-done
+# === Oh My Zsh (Zsh configuration manager) ===
+# https://ohmyz.sh
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/Shared/.oh-my-zsh"
+export ZSH_CUSTOM="$ZSH/custom"
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME=powerlevel10k/powerlevel10k
+ZSH_THEME=''
 
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
-  source $file
-done
+# Use hyphen-insensitive completion.
+# _ and - will be interchangeable.
+HYPHEN_INSENSITIVE=true
 
-unset config_files
+# Remind me to update when it's time.
+zstyle ':omz:update' mode reminder
+# How often to auto-update (in days).
+zstyle ':omz:update' frequency 14
 
-# Better history
-# Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-autosuggestions)
+#plugins+=(keychain gpg-agent)
+
+source $ZSH/oh-my-zsh.sh
+
+# === Starship (shell prompt) ===
+# https://starship.rs
+
+eval "$(starship init zsh)"
+
+# === Better history navigation ===
+
+# Credits to <https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys>.
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Down
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search

@@ -1,0 +1,17 @@
+export LANG=en_US.UTF-8
+
+# === Homebrew ===
+
+# NOTE: Overrides `PATH`.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# === Rust ===
+
+# NOTE: I prefer sharing `.cargo` across users since
+#   I have multiple sessions where I dev in Rust.
+export CARGO_HOME="/Users/Shared/.cargo"
+export PATH="$CARGO_HOME/bin:$PATH"
+
+# === Node.js ===
+
+export PATH=$HOME/.npm/bin:$PATH
