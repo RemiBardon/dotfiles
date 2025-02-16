@@ -1029,8 +1029,14 @@
 				<dict>
 					<key>Action</key>
 					<integer>11</integer>
+					<key>Apply Mode</key>
+					<integer>0</integer>
+					<key>Escaping</key>
+					<integer>1</integer>
 					<key>Text</key>
-					<string>"0x1b 0x7f"</string>
+					<string>0x17</string>
+					<key>Version</key>
+					<integer>2</integer>
 				</dict>
 				<key>0xf702-0x2a0000-0x7b</key>
 				<dict>
