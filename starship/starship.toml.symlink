@@ -149,8 +149,10 @@ tag_disabled = false
 # only_detached = false
 # commit_hash_length = 5
 
+# https://starship.rs/config/#git-metrics
 [git_metrics]
 disabled = false
+format = '(([+$added]($added_style))([-$deleted]($deleted_style)) )'
 
 # https://starship.rs/config/#git-status
 [git_status]
