@@ -8,7 +8,7 @@
 // from the command palette or from `Zed` application menu.
 {
   "features": {
-    "inline_completion_provider": "none"
+    "edit_prediction_provider": "none"
   },
   "assistant": {
     "enabled": false,
@@ -17,9 +17,14 @@
   },
   "soft_wrap": "editor_width",
   "ui_font_size": 16,
+  // "buffer_font_family": "FiraCode Nerd Font Mono",
   "buffer_font_size": 16,
   "buffer_font_features": {
     "calt": false
+  },
+  "terminal": {
+    "font_size": 10,
+    "font_family": "FiraCode Nerd Font Mono"
   },
   "tab_size": 2,
   "show_whitespaces": "boundary",
@@ -36,9 +41,13 @@
     "show_parameter_hints": true,
     "show_other_hints": true
   },
-  "terminal": {
-    "font_size": 10,
-    "font_family": "MesloLGS NF"
+  "auto_install_extensions": {
+    "toml": true,
+    "dockerfile": true,
+    "docker-compose": true,
+    "lua": true,
+    "cucumber": true,
+    "ruby": true
   },
   "file_types": {
     "Plain Text": ["*.destination"],
