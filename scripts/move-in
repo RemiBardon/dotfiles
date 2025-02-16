@@ -16,7 +16,14 @@ for topic in "$@"; do
 		error "Topic $(format_url $topic) not found."
 		continue
 	fi
-	symlink_topic "$topic"
 
+	symlink_topic "$topic"
 	success "Successfully symlinked topic $(format_url $topic)"
+
+	installer="$topic/install.sh"
+	if [ -f "$installer" ]; then
+		edo sh -c "$installer"
+		success "Successfully ran custom installer $(format_url $installer)."
+	fi
+	unset installer
 done
