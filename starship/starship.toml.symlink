@@ -1,7 +1,9 @@
 # See <https://starship.rs/config/#default-prompt-format> for the default prompt format.
 # Find icons at <https://www.nerdfonts.com/cheat-sheet>.
 
-# NOTE: Default with `time` before the new line.
+# NOTE: Default with:
+#   - `time` before the new line
+#   - `git_metrics` after `git_status`
 format = """
 $username\
 $hostname\
@@ -16,8 +18,8 @@ $fossil_metrics\
 $git_branch\
 $git_commit\
 $git_state\
-$git_metrics\
 $git_status\
+$git_metrics\
 $hg_branch\
 $pijul_channel\
 $docker_context\
