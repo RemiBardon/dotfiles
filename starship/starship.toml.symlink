@@ -143,6 +143,10 @@ symbol = "󱘗 "
 [scala]
 symbol = " "
 
+[status]
+disabled = false
+format = '[(SIG$signal_name )\(exit $int\)]($style) '
+
 [swift]
 symbol = " "
 
