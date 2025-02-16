@@ -60,7 +60,7 @@ disabled = false
 # https://starship.rs/config/#git-status
 [git_status]
 stashed = '*'
-format = '([($ahead_behind )$all_status]($style) )'
+format = '[($ahead_behind )($all_status )]($style)'
 ahead = '⇡${count}'
 diverged = ' ${ahead_count}${behind_count}'
 behind = '⇣${count}'
