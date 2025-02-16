@@ -157,6 +157,7 @@ format = '[($ahead_behind )($all_status )]($style)'
 ahead = '⇡${count}'
 diverged = ' ${ahead_count}${behind_count}'
 behind = '⇣${count}'
+modified = ''
 
 [golang]
 symbol = " "
