@@ -157,7 +157,7 @@ format = '(([+$added]($added_style))([-$deleted]($deleted_style)) )'
 # https://starship.rs/config/#git-status
 [git_status]
 stashed = '*'
-format = '[$ahead_behind ](bold bright-purple)([$all_status]($style) )'
+format = '([$ahead_behind ](bold bright-purple))([$all_status]($style) )'
 ahead = '⇡${count}'
 diverged = ''
 behind = '⇣${count}'
