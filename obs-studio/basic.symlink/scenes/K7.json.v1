@@ -9,10 +9,9 @@
             "name": "Code"
         }
     ],
-    "name": "K7",
     "sources": [
         {
-            "prev_ver": 520093696,
+            "prev_ver": 503447555,
             "name": "Default",
             "uuid": "4a18cf57-ae0b-49b9-9a6a-d38507136fde",
             "id": "scene",
@@ -27,44 +26,28 @@
                         "visible": true,
                         "locked": true,
                         "rot": 0.0,
-                        "scale_ref": {
-                            "x": 1280.0,
-                            "y": 1024.0
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
                         },
                         "align": 5,
                         "bounds_type": 0,
                         "bounds_align": 0,
                         "bounds_crop": false,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
                         "crop_left": 0,
                         "crop_top": 0,
                         "crop_right": 0,
                         "crop_bottom": 0,
                         "id": 5,
                         "group_item_backup": false,
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "pos_rel": {
-                            "x": -1.25,
-                            "y": -1.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_rel": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_rel": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
                         "scale_filter": "disable",
                         "blend_method": "default",
                         "blend_type": "normal",
@@ -82,44 +65,28 @@
                         "visible": true,
                         "locked": true,
                         "rot": 0.0,
-                        "scale_ref": {
-                            "x": 1280.0,
-                            "y": 1024.0
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
                         },
                         "align": 5,
                         "bounds_type": 0,
                         "bounds_align": 0,
                         "bounds_crop": false,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
                         "crop_left": 0,
                         "crop_top": 0,
                         "crop_right": 0,
                         "crop_bottom": 0,
                         "id": 7,
                         "group_item_backup": false,
-                        "pos": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "pos_rel": {
-                            "x": -1.25,
-                            "y": -1.0
-                        },
-                        "scale": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "scale_rel": {
-                            "x": 1.0,
-                            "y": 1.0
-                        },
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_rel": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
                         "scale_filter": "disable",
                         "blend_method": "default",
                         "blend_type": "normal",
@@ -157,7 +124,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 520093696,
+            "prev_ver": 503447555,
             "name": "HD60 S+ (vidéo)",
             "uuid": "f951e40e-9313-4fd8-af37-2e86624a6b24",
             "id": "macos-avcapture-fast",
@@ -195,7 +162,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 520093696,
+            "prev_ver": 503447555,
             "name": "HD60 S+ (son)",
             "uuid": "52c626c9-f276-4d92-9ebd-84a7553e65f1",
             "id": "coreaudio_input_capture",
@@ -226,7 +193,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 520093696,
+            "prev_ver": 503447555,
             "name": "Code",
             "uuid": "58a81265-d6a3-4b84-9ffd-80917f09f5f9",
             "id": "scene",
@@ -241,44 +208,28 @@
                         "visible": true,
                         "locked": false,
                         "rot": 0.0,
-                        "scale_ref": {
-                            "x": 1280.0,
-                            "y": 1024.0
+                        "pos": {
+                            "x": 44.0,
+                            "y": 661.0
+                        },
+                        "scale": {
+                            "x": 0.53515625,
+                            "y": 0.53472220897674561
                         },
                         "align": 5,
                         "bounds_type": 0,
                         "bounds_align": 0,
                         "bounds_crop": false,
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
                         "crop_left": 0,
                         "crop_top": 0,
                         "crop_right": 0,
                         "crop_bottom": 0,
                         "id": 1,
                         "group_item_backup": false,
-                        "pos": {
-                            "x": 44.0,
-                            "y": 661.0
-                        },
-                        "pos_rel": {
-                            "x": -1.1640625,
-                            "y": 0.291015625
-                        },
-                        "scale": {
-                            "x": 0.53515625,
-                            "y": 0.53472220897674561
-                        },
-                        "scale_rel": {
-                            "x": 0.53515625,
-                            "y": 0.53472220897674561
-                        },
-                        "bounds": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
-                        "bounds_rel": {
-                            "x": 0.0,
-                            "y": 0.0
-                        },
                         "scale_filter": "disable",
                         "blend_method": "default",
                         "blend_type": "normal",
@@ -314,7 +265,7 @@
             "private_settings": {}
         },
         {
-            "prev_ver": 520093696,
+            "prev_ver": 503447555,
             "name": "Webcam",
             "uuid": "02d71e14-afeb-4d33-9532-49b7a9d71eec",
             "id": "macos-avcapture",
@@ -409,9 +360,5 @@
         "x": 1280,
         "y": 1024
     },
-    "version": 2,
-    "migration_resolution": {
-        "x": 1280,
-        "y": 1024
-    }
+    "name": "K7"
 }
