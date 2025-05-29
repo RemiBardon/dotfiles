@@ -41,7 +41,7 @@ link_() {
 
 		if (( $overwrite )); then
 		  local q="Are you REALLY sure you want to delete $(format_url "$dst")? This might delete your \`\$HOME\` if it's what you wrote!"
-		  if [ -L "$dst" ] || ask_yes_no "$q" "n"; then
+		  if [ -L "$dst" ] || ask-yes-no "$q" "n"; then
 				edo ${needs_sudo+sudo} rm -rf "$dst"
 				warn $(format_secondary "Deleted $(format_url "$dst").")
 			else
