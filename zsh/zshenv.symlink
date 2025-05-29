@@ -4,6 +4,7 @@ export LANG=en_US.UTF-8
 
 # NOTE: Overrides `PATH`.
 eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="${HOMEBREW_PREFIX:?}/opt/binutils/bin:$PATH"
 
 # === Rust ===
 
@@ -16,3 +17,4 @@ export PATH="$CARGO_HOME/bin:$PATH"
 
 export PATH="$HOME/.npm/bin:$PATH"
 export PATH="$HOME/.volta/bin:$PATH"
+
