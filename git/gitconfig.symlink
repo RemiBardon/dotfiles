@@ -23,4 +23,17 @@
 [lfs "transfer"]
 	enablehrefrewrite = true
 [safe]
-	directory = /Users/remi/.dotfiles/scripts/bash-toolbox
+	directory = /Users/Shared/dotfiles
+	directory = /Users/Shared/dotfiles/scripts/bash-toolbox
+[sendemail]
+	from = Rémi Bardon <remi@remibardon.com>
+	smtpServer = 127.0.0.1
+	smtpServerPort = 1025
+	smtpUser = remi@remibardon.com
+	smtpEncryption = STARTTLS
+	confirm = auto
+	# annotate = true
+	# confirm = always
+[credential]
+	helper = osxkeychain
+
