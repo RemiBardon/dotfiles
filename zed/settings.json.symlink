@@ -10,15 +10,18 @@
   "features": {
     "edit_prediction_provider": "none"
   },
-  "assistant": {
-    "enabled": false,
+  "agent": {
     "version": "2",
-    "dock": "right"
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-3-5-haiku-latest"
+    }
   },
   "soft_wrap": "editor_width",
   "ui_font_size": 16,
+  "wrap_guides": [80],
   // "buffer_font_family": "FiraCode Nerd Font Mono",
-  "buffer_font_size": 16,
+  "buffer_font_size": 18.0,
   "buffer_font_features": {
     "calt": false
   },
@@ -74,15 +77,13 @@
     },
     "Plain Text": {
       "ensure_final_newline_on_save": false
-    }
-  },
-  "language_overrides": {
+    },
     "Markdown": {
       // Removing trailing whitespaces would remove manual line breaks (two spaces in Markdown).
-      "remove_trailing_whitespace_on_save": false,
+      "remove_trailing_whitespace_on_save": false
       // Personal preference.
       // NOTE: Disabled because of UTF-8 bug.
-      "show_whitespaces": "none"
+      // "show_whitespaces": "none"
     }
   },
   "lsp": {
@@ -90,9 +91,7 @@
       "initialization_options": {
         "cargo": {
           // "features": "debug",
-          "cfgs": {
-            "debug_assertions": true
-          }
+          "cfgs": ["debug_assertions"]
         }
       }
     }
