@@ -10,3 +10,6 @@ brew_install() {
 
 brew_install --formula starship
 brew_install --cask font-fira-code-nerd-font
+chmod 644 ~/Library/Fonts/FiraCodeNerdFont*
+sudo chown root:wheel ~/Library/Fonts/FiraCodeNerdFont*
+sudo mv ~/Library/Fonts/FiraCodeNerdFont* /Library/Fonts/
