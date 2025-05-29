@@ -1,3 +1,5 @@
+source ~/.zshenv
+
 # === GPG ===
 
 export GPG_TTY="$(tty)"
@@ -58,3 +60,9 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
+
+# === Custom aliases ===
+
+#alias greet-done='afplay /System/Library/Sounds/Hero.aiff'
+alias greet-done='res=$?; (afplay /System/Library/Sounds/$([ $res -eq 0 ] && echo Funk || echo Bottle).aiff &); return $res'
+
